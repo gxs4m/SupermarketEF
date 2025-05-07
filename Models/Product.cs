@@ -10,6 +10,7 @@ namespace SupermarketEF.Models
     {
         // [Key] -> Anotación si la propiedad no se llama Id, ejemplo ProductId
         public int Id { get; set; } // Será la llave primaria 
-    
+        public string Name { get; set; } 
+
     }
 }
