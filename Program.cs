@@ -26,12 +26,22 @@ namespace SupermarketEF
                 Description = "Grains Category"
             };
 
-            // Se agrega el objeto creado al contexto de la BD
+            /* Se agrega el objeto creado al contexto de la BD 
             context.Add(grainsCategory);
 
             // Se graban los cambios realizados al contexto
+            context.SaveChanges(); */
+            // Recupera la cateogira cuyo Name sea Grains
+            var grainCategory = context.Categories
+                .Where(c => c.Name == "Grains")
+                .FirstOrDefault();
+            if (grainCategory is Category)
+            {
+                grainCategory.Description = "New description applied";
+                context.Remove(grainCategory);
+            }
             context.SaveChanges();
-            // Recupera todas las categorías y las ordena por el nombre
+
             var categories = context.Categories.OrderBy(p => p.Name);
             foreach (var category in categories)
             {
